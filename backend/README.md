@@ -6,14 +6,23 @@ This Spring Boot application interacts with Azure Cosmos MongoDB to store critic
 
 Before running the application, ensure that you have the following dependencies set up:
 
-- Java 17 (Open JDK 22)
+- Java 17
 - Spring Boot
 - MongoDB (Azure Cosmos DB with MongoDB API)
 - Azure Blob Storage
 
+## Getting Started
+
+### Clone the Repository**
+
+   ```bash
+   git clone https://github.com/terawe/contentgenerator.git
+   cd backend
+   ```
+
 ## Configuration
 
-The application requires certain configurations to be set in the `application.properties` file.
+The application requires certain configurations to be set in the `application.properties` file ( path `src/main/resources/application.properties`).
 
 ### 1. MongoDB Connection
 
