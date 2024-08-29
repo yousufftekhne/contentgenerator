@@ -20,18 +20,18 @@ Before running the application, ensure that you have the following dependencies 
    cd backend
    ```
 
-## Configuration
+## Configuration - [Reference](env_variables.md)
 
-The application requires certain configurations to be set in the `application.properties` file ( path `src/main/resources/application.properties`).
+The application requires certain configurations to be set in the `application.properties` file ( path [src/main/resources/application.properties](src/main/resources/application.properties)).
 
 ### 1. MongoDB Connection
 
 You need to specify the connection string to your Azure Cosmos DB (with MongoDB API).
 
-Add the following property in your `application.properties` file:
+Add the following property in your `application.properties` file :
 
 ```properties
-spring.data.mongodb.uri=<YOUR_COSMOS_DB_CONNECTION_STRING>
+spring.data.mongodb.uri=${AZURE_COSMOS_MONGODB_CONNECTION_STRING}
 ```
 
 #### How to Get Azure Cosmos MongoDB Connection String
@@ -39,14 +39,14 @@ spring.data.mongodb.uri=<YOUR_COSMOS_DB_CONNECTION_STRING>
 1. Go to your Azure Portal.
 2. Navigate to your Azure Cosmos DB resource.
 3. Under the **Settings** section, click on **Connection String**.
-4. Copy the **Primary Connection String** and replace `<YOUR_COSMOS_DB_CONNECTION_STRING>` in the above configuration.
+4. Copy the **Primary Connection String** and add `AZURE_COSMOS_MONGODB_CONNECTION_STRING` in environment variables.
 
 ### 2. Azure Blob Storage Connection
 
 Similarly, you need to add the connection string for your Azure Storage account.
 
 ```properties
-azure.storage.connection-string=<YOUR_STORAGE_CONNECTION_STRING>
+azure.storage.connection-string=${AZURE_STORAGE_CONNECTION_STRING}
 ```
 
 #### How to Get Azure Storage Account Connection String
@@ -54,7 +54,7 @@ azure.storage.connection-string=<YOUR_STORAGE_CONNECTION_STRING>
 1. Go to your Azure Portal.
 2. Navigate to your Storage Account resource.
 3. Under the **Security + Networking** section, click on **Access keys**.
-4. Copy the **Connection String** for either key1 or key2 and replace `<YOUR_STORAGE_CONNECTION_STRING>` in the above configuration.
+4. Copy the **Connection String** for either key1 or key2 and add `AZURE_STORAGE_CONNECTION_STRING` in environment variables.
 
 ### 3. Data Append Configuration
 
@@ -71,6 +71,13 @@ Once you have added the required configurations in your `application.properties`
 
 ```bash
 ./mvnw spring-boot:run
+```
+
+### Build the Application
+Once you have added the required configurations in your `application.properties`, you can run the application using the following command:
+
+```bash
+./mvnw clean package
 ```
 
 ### Features

@@ -23,6 +23,9 @@ This is a backend API for generating marketing content, built using Spring Boot 
    cd middleware
    ```
    
+   ## Setup Environment Variables - [Reference](env_variables.md)
+   
+
 2. **Configure Azure OpenAI**
 
     * Go to [Azure OpenAI](https://ai.azure.com) and deploy the GPT model.
@@ -31,11 +34,11 @@ This is a backend API for generating marketing content, built using Spring Boot 
 
 3. **Update Application Properties**
    
-   Open the `application.properties` file ( path `src/main/resources/application.properties`) and update the following values:
+   Open the `application.properties` file ( path [src/main/resources/application.properties](src/main/resources/application.properties)) and update the following values:
    
     ```properties
-   azure.openai.endpoint_url=<Your Azure OpenAI Endpoint URL>
-   azure.openai.key=<Your Azure OpenAI API Key>
+   azure.openai.endpoint_url=${AZURE_OPENAI_ENDPOINT_URL}
+   azure.openai.key=${AZURE_OPENAI_KEY}
    ```
 
 4. **Run the Application**
@@ -44,4 +47,12 @@ This is a backend API for generating marketing content, built using Spring Boot 
 
     ```bash
     ./mvnw spring-boot:run
+   ```
+
+5. **Build the Application**
+
+   Use Maven to run the application:
+
+    ```bash
+    ./mvnw clean package
    ```

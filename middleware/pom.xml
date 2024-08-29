@@ -51,6 +51,16 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>7.0.2.Final</version>
+        </dependency>
+        <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
             <scope>test</scope>
@@ -58,6 +68,7 @@
     </dependencies>
 
     <build>
+        <finalName>middleware</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
