@@ -35,7 +35,7 @@ public class CustomerService {
             Customer updatedCustomer = existingCustomer.get();
             updatedCustomer.setName(customer.getName());
             updatedCustomer.setDemographic(customer.getDemographic());
-            updatedCustomer.setPhysiographic(customer.getPsychographic());
+            updatedCustomer.setPhysiographic(customer.getPhysiographic());
             updatedCustomer.setBehavioral(customer.getBehavioral());
             updatedCustomer.setDigitalBehavior(customer.getDigitalBehavior());
             updatedCustomer.setLocation(customer.getLocation());

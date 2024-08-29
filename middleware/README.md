@@ -56,3 +56,26 @@ This is a backend API for generating marketing content, built using Spring Boot 
     ```bash
     ./mvnw clean package
    ```
+## Deployment Methods
+
+### 1. Deploying to Azure Kubernetes Service (AKS)
+
+You can deploy the application to an Azure Kubernetes Service (AKS) cluster. Detailed instructions are provided in the [AKS Deployment Guide](aks.md).
+
+- **API Exposure**: Once deployed, the API should be exposed via Azure API Management. For more information, refer to the [API Management Guide](api_management.md).
+
+### 2. Deploying to Azure App Service
+
+Alternatively, you can deploy the application to Azure App Service. Follow the steps outlined in the [App Service Deployment Guide](app_service.md).
+
+- **API Exposure**: Similar to the AKS deployment, the API for the App Service deployment should be exposed via Azure API Management. Details can be found in the [API Management Guide](api_management.md).
+
+## API Management
+
+Azure API Management provides a unified front-end for your application’s APIs. Regardless of whether you deploy to AKS or App Service, using Azure API Management allows you to:
+
+- Securely expose your APIs
+- Monitor and analyze API usage
+- Apply policies for rate limiting, authorization, etc.
+
+More details can be found in the [API Management Guide](../api_management.md).

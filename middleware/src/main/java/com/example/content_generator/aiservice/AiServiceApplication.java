@@ -7,7 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AiServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AiServiceApplication.class, args);
+        try {
+            SpringApplication.run(AiServiceApplication.class, args);
+        } catch (Exception e) {
+            System.err.println("Application failed to start: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
 }

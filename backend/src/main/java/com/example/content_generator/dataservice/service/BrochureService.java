@@ -23,16 +23,22 @@ public class BrochureService {
     }
 
     public String uploadFile(MultipartFile file) throws IOException {
-        BlobContainerClient containerClient = blobServiceClient.getBlobContainerClient(containerName);
-        if (!containerClient.exists()) {
-            containerClient.create();
+        try {
+            BlobContainerClient containerClient = blobServiceClient.getBlobContainerClient(containerName);
+            if (!containerClient.exists()) {
+                containerClient.create();
+            }
+
+            String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
+            BlobClient blobClient = containerClient.getBlobClient(fileName);
+            blobClient.upload(file.getInputStream(), file.getSize(), true);
+
+            return blobClient.getBlobUrl();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
 
-        String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
-        BlobClient blobClient = containerClient.getBlobClient(fileName);
-        blobClient.upload(file.getInputStream(), file.getSize(), true);
-
-        return blobClient.getBlobUrl();
     }
 
     public void deleteFile(String fileName) {

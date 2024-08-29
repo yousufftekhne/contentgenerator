@@ -10,7 +10,6 @@ public class CustomerDTO {
     private Location location;
     private DigitalBehavior digitalBehavior;
 
-
     public String getName() {
         return name;
     }

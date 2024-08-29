@@ -1,10 +1,5 @@
 package com.example.content_generator.dataservice.dto;
 
-import com.example.content_generator.dataservice.model.Price;
-
-import java.util.List;
-import java.util.UUID;
-
 public class BrochureDTO {
     private String productId;
     private String url;

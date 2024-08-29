@@ -1,7 +1,5 @@
 package com.example.content_generator.dataservice.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -12,8 +10,7 @@ import java.util.List;
 
 import static com.example.content_generator.dataservice.core.Common.generateCustomUUID;
 
-@JsonSerialize
-@JsonDeserialize
+
 @Document(collection = "Products")
 public class Product {
 
@@ -26,6 +23,8 @@ public class Product {
     @NotBlank(message = "Product description cannot be blank")
     private String description;
 
+    @NotNull(message = "SKU cannot be null")
+    @NotBlank
     private String sku;
 
     @NotNull(message = "Prices cannot be null")
@@ -41,7 +40,7 @@ public class Product {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(@NotNull @NotBlank String id) {
         this.id = id;
     }
 
@@ -49,7 +48,7 @@ public class Product {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NotBlank(message = "Product name cannot be blank") String name) {
         this.name = name;
     }
 
@@ -57,7 +56,7 @@ public class Product {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(@NotBlank(message = "Product description cannot be blank") String description) {
         this.description = description;
     }
 
@@ -65,7 +64,10 @@ public class Product {
         return prices;
     }
 
-    public void setPrices(List<Price> prices) {
+    public void setPrices(
+            @NotNull(message = "Prices cannot be null")
+            @Valid List<Price> prices
+    ) {
         this.prices = prices;
     }
 
@@ -73,7 +75,9 @@ public class Product {
         return sku;
     }
 
-    public void setSku(String sku) {
+    public void setSku(
+            @NotNull(message = "SKU cannot be null")
+            @NotBlank String sku) {
         this.sku = sku;
     }
 }
