@@ -24,7 +24,6 @@ This is a backend API for generating marketing content, built using Spring Boot 
    ```
    
    ## Setup Environment Variables - [Reference](env_variables.md)
-   
 
 2. **Configure Azure OpenAI**
 
