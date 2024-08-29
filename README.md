@@ -1,6 +1,6 @@
 # Content Generator for Marketing Purposes
 
-This repository contains the "Content Generator for Marketing Purposes," a multi-application system designed to generate marketing content based on user selection. The system consists of three separate applications:
+This repository contains the "Content Generator for Marketing Campaign", a multi-application system designed to generate marketing content based on user selection. The system consists of three separate applications:
 
 1. **Backend**: Handles data management and stores content templates.
 2. **Middleware**: Provides AI services for content generation.
