@@ -3,6 +3,8 @@ package com.example.content_generator.dataservice.service;
 import com.azure.storage.blob.BlobClient;
 import com.azure.storage.blob.BlobContainerClient;
 import com.azure.storage.blob.BlobServiceClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,6 +14,8 @@ import java.util.UUID;
 
 @Service
 public class BrochureService {
+
+    private static Logger LOGGER = LoggerFactory.getLogger(BrochureService.class);
 
     @Value("${azure.storage.container-name}")
     private String containerName;
@@ -35,15 +39,19 @@ public class BrochureService {
 
             return blobClient.getBlobUrl();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error(e.getMessage());
             return null;
         }
 
     }
 
     public void deleteFile(String fileName) {
-        BlobContainerClient containerClient = blobServiceClient.getBlobContainerClient(containerName);
-        BlobClient blobClient = containerClient.getBlobClient(fileName);
-        blobClient.delete();
+        try {
+            BlobContainerClient containerClient = blobServiceClient.getBlobContainerClient(containerName);
+            BlobClient blobClient = containerClient.getBlobClient(fileName);
+            blobClient.delete();
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+        }
     }
 }

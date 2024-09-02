@@ -41,6 +41,8 @@ function App({ pca }) {
               ...loginRequest,
               account: instance.getActiveAccount()
             });
+          } else {
+            console.error("Error fetching graph data:", e);
           }
         });
     }
