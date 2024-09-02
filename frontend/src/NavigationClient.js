@@ -18,10 +18,14 @@ export class CustomNavigationClient extends NavigationClient {
     async navigateInternal(url, options) {
         const relativePath = url.replace(window.location.origin, "");
 
-        if (options.noHistory) {
-            this.navigate(relativePath, { replace: true });
-        } else {
-            this.navigate(relativePath);
+        try {
+            if (options.noHistory) {
+                this.navigate(relativePath, { replace: true });
+            } else {
+                this.navigate(relativePath);
+            }
+        } catch (error) {
+            console.error("Navigation error:", error);
         }
 
         return false; // Indicate that the navigation was handled

@@ -30,4 +30,7 @@ msalInstance.initialize().then(() => {
             <App pca={msalInstance} />
         </HashRouter>
     );
+}).catch((error) => {
+    console.error('MSAL initialization failed:', error);
+    msalInstance.clearCache();
 });
